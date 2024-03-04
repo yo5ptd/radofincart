@@ -1,0 +1,79 @@
+
+(rules PCB radofin
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 533)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 500.0)
+    (clear 125.0 (type smd_to_turn_gap))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "Net-(J1-Pin_6)" VCC "Net-(U1-A12)" "Net-(U1-A13)" GND "Net-(J1-Pin_18)" "Net-(J1-Pin_1)" "Net-(J1-Pin_32)"
+    "Net-(J1-Pin_31)" "Net-(J1-Pin_30)" "Net-(J1-Pin_29)" "Net-(J1-Pin_28)" "Net-(J1-Pin_27)" "Net-(J1-Pin_26)" "Net-(J1-Pin_15)" "Net-(J1-Pin_14)"
+    "Net-(J1-Pin_13)" "Net-(J1-Pin_12)" "Net-(J1-Pin_11)" "Net-(J1-Pin_10)" "Net-(J1-Pin_9)" "Net-(J1-Pin_8)" "Net-(J1-Pin_5)" "Net-(J1-Pin_4)"
+    "Net-(J1-Pin_3)" "Net-(J1-Pin_16)" "unconnected-(J1-Pin_2-Pad2)" "unconnected-(J1-Pin_7-Pad7)" "unconnected-(J1-Pin_19-Pad19)" "unconnected-(J1-Pin_20-Pad20)" "unconnected-(J1-Pin_21-Pad21)" "unconnected-(J1-Pin_22-Pad22)"
+    "unconnected-(J1-Pin_24-Pad24)" "unconnected-(J1-Pin_25-Pad25)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 800.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
